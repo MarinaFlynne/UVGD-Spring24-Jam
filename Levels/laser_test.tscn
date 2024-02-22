@@ -1,0 +1,132 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg1g5ckvnutqr"]
+
+[ext_resource type="PackedScene" uid="uid://bymevrsijckhw" path="res://Game-Objects/mirror.tscn" id="1_r06fd"]
+[ext_resource type="PackedScene" uid="uid://bmrt2qg0e13nm" path="res://Game-Objects/laser.tscn" id="2_vurmu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dyeo"]
+size = Vector2(410, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avljj"]
+size = Vector2(278, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74sxx"]
+size = Vector2(26, 225)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xv0rf"]
+size = Vector2(26, 225)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqc5h"]
+size = Vector2(387, 28)
+
+[node name="LaserTest" type="Node2D"]
+
+[node name="Mirrors" type="Node2D" parent="."]
+
+[node name="Mirror" parent="Mirrors" instance=ExtResource("1_r06fd")]
+
+[node name="Mirror2" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(46, 130)
+rotation = 0.677167
+
+[node name="Mirror3" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(392, 53)
+rotation = 2.25451
+
+[node name="Mirror4" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(386, -30)
+rotation = 0.47192
+
+[node name="Mirror5" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(290, -12)
+rotation = 1.79194
+
+[node name="Mirror6" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(385, 124)
+rotation = 1.42055
+
+[node name="Mirror7" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(215, 101)
+rotation = -0.127041
+
+[node name="Mirror9" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(180, 105)
+rotation = -0.127041
+
+[node name="Mirror10" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(146, 110)
+rotation = -0.127041
+
+[node name="Mirror11" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(148, 143)
+rotation = -0.127041
+
+[node name="Mirror12" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(182, 141)
+rotation = -0.127041
+
+[node name="Mirror15" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(246, 99)
+rotation = -0.0282463
+
+[node name="Colliders" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders"]
+position = Vector2(205, 155)
+shape = SubResource("RectangleShape2D_0dyeo")
+
+[node name="ColorRect" type="ColorRect" parent="Colliders/CollisionShape2D"]
+offset_left = -205.0
+offset_top = -10.0
+offset_right = 205.0
+offset_bottom = 10.0
+color = Color(0.670588, 0.101961, 0.270588, 1)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Colliders"]
+position = Vector2(140, 12)
+shape = SubResource("RectangleShape2D_avljj")
+
+[node name="ColorRect" type="ColorRect" parent="Colliders/CollisionShape2D4"]
+offset_left = -139.0
+offset_top = -10.0
+offset_right = 139.0
+offset_bottom = 10.0
+color = Color(0.752941, 0.752941, 0.752941, 1)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Colliders"]
+position = Vector2(420, 52.5)
+shape = SubResource("RectangleShape2D_74sxx")
+
+[node name="ColorRect" type="ColorRect" parent="Colliders/CollisionShape2D3"]
+offset_left = -12.0
+offset_top = -112.0
+offset_right = 12.0
+offset_bottom = 112.0
+color = Color(0.964706, 0.831373, 0.352941, 1)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Colliders"]
+position = Vector2(13, 52)
+shape = SubResource("RectangleShape2D_xv0rf")
+
+[node name="ColorRect" type="ColorRect" parent="Colliders/CollisionShape2D5"]
+offset_left = -13.0
+offset_top = -113.0
+offset_right = 13.0
+offset_bottom = 113.0
+color = Color(0.964706, 0.831373, 0.352941, 1)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Colliders"]
+position = Vector2(217.5, -63)
+shape = SubResource("RectangleShape2D_nqc5h")
+
+[node name="ColorRect" type="ColorRect" parent="Colliders/CollisionShape2D6"]
+offset_left = -193.0
+offset_top = -14.0
+offset_right = 194.0
+offset_bottom = 14.0
+color = Color(0.337255, 0.72549, 0.827451, 1)
+
+[node name="Laser" parent="." instance=ExtResource("2_vurmu")]
+position = Vector2(300, 115)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(216, 45)

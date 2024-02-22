@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bymevrsijckhw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4dcx"]
+size = Vector2(37, 7)
+
+[node name="Mirror" type="StaticBody2D" groups=["Mirrors"]]
+position = Vector2(45, 41)
+rotation = 2.30003
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t4dcx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -18.0
+offset_top = -3.0
+offset_right = 18.0
+offset_bottom = 3.0
+color = Color(0.321569, 0.670588, 0.788235, 0.619608)
