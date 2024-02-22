@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://4isqcoyrktjq"]
+
+[ext_resource type="Script" path="res://Scenes/Components/direction_comp.gd" id="1_43mnm"]
+
+[node name="DirectionComp" type="Node2D"]
+position = Vector2(8, 8)
+script = ExtResource("1_43mnm")

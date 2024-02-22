@@ -18,6 +18,18 @@ config/icon="res://icon.svg"
 
 project/assembly_name="UVGD Spring 24 Jam"
 
+[file_customization]
+
+folder_colors={
+"res://Components/": "red",
+"res://Fonts/": "pink",
+"res://Game-Objects/": "orange",
+"res://Levels/": "yellow",
+"res://Music/": "green",
+"res://SFX/": "teal",
+"res://Sprites/": "blue"
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
