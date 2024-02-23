@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvxt5sgpp67cb"]
+
+[ext_resource type="Script" path="res://Game-Objects/splitter.gd" id="1_o8pgx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtpse"]
+size = Vector2(21, 21)
+
+[node name="Splitter" type="StaticBody2D" node_paths=PackedStringArray("new_beam_marker", "beam_cont_marker") groups=["Splitters"]]
+script = ExtResource("1_o8pgx")
+new_beam_marker = NodePath("NewBeamPoint")
+beam_cont_marker = NodePath("BeamContinueMarker")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mtpse")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+color = Color(0.933333, 0.498039, 0.615686, 0.729412)
+
+[node name="NewBeamPoint" type="Marker2D" parent="."]
+position = Vector2(0, 11)
+
+[node name="BeamContinueMarker" type="Marker2D" parent="."]
+position = Vector2(11, 0)

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c2624ba22axr5"]
+
+[node name="LaserRay" type="Node2D"]
+
+[node name="Line2D" type="Line2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]

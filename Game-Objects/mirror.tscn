@@ -4,8 +4,6 @@
 size = Vector2(37, 7)
 
 [node name="Mirror" type="StaticBody2D" groups=["Mirrors"]]
-position = Vector2(45, 41)
-rotation = 2.30003
 collision_layer = 3
 collision_mask = 3
 
