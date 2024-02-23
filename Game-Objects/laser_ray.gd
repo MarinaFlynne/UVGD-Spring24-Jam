@@ -28,14 +28,12 @@ func process_mirror_collision(coll, pt) -> bool:
 	return true
 	
 func process_splitter_collision(coll, pt, ray):
-	print("emitting", coll.new_laser_point.global_position)
 	new_laser_req.emit(coll.new_laser_point.global_position, Vector2.DOWN)
 	
 	var ray_direction = (pt - ray.global_position).normalized()
 	var ray_start_y = pt.y
 	var ray_start = Vector2(coll.laser_through_point.global_position.x, ray_start_y)
-	
-	print("emitting", coll.laser_through_point.global_position)
+
 	new_laser_req.emit(ray_start, ray_direction)
 	
 	pass
