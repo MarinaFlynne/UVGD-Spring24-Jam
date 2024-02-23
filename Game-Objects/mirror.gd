@@ -5,3 +5,7 @@ func move_to_pos(position_to_move: Vector2):
 
 func rotate_towards_point(point):
 	look_at(point)
+
+
+func _on_drag_comp_delete_me():
+	queue_free()

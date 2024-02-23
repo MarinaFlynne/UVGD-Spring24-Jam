@@ -66,4 +66,5 @@ offset_bottom = 11.0
 
 [connection signal="request_disable" from="LeftWall" to="." method="disable"]
 [connection signal="request_enable" from="LeftWall" to="." method="enable"]
+[connection signal="delete_me" from="DragComp" to="." method="_on_drag_comp_delete_me"]
 [connection signal="move_me" from="DragComp" to="." method="move_to_pos"]

@@ -15,3 +15,7 @@ func disable():
 	LeftWall.remove_from_group("Splitters")
 	RightWall.remove_from_group("Splitters")
 	pass
+
+
+func _on_drag_comp_delete_me():
+	queue_free()

@@ -24,5 +24,6 @@ color = Color(0.321569, 0.670588, 0.788235, 0.619608)
 [node name="DragComp" parent="." instance=ExtResource("1_p0oht")]
 modulate = Color(1, 1, 1, 0)
 
+[connection signal="delete_me" from="DragComp" to="." method="_on_drag_comp_delete_me"]
 [connection signal="move_me" from="DragComp" to="." method="move_to_pos"]
 [connection signal="rotate_me" from="DragComp" to="." method="rotate_towards_point"]

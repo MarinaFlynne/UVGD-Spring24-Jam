@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2y3mraj7adca"]
+[gd_scene load_steps=12 format=3 uid="uid://d2y3mraj7adca"]
 
 [ext_resource type="Texture2D" uid="uid://cjgxtsp5l4yl2" path="res://Sprites/Menus/mirror_button_faded.png" id="1_62gf1"]
 [ext_resource type="Script" path="res://Game-Objects/UI/placement_menu.gd" id="1_ifvq6"]
@@ -8,11 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://b315fciaddd2j" path="res://Sprites/Menus/splitter_button.png" id="5_dhv7j"]
 [ext_resource type="Texture2D" uid="uid://cx185dx1dn2nj" path="res://Sprites/Menus/splitter_button_hover.png" id="6_sggx0"]
 [ext_resource type="PackedScene" uid="uid://dtihbv7hy887e" path="res://Game-Objects/laser_generator.tscn" id="8_8etjk"]
+[ext_resource type="Texture2D" uid="uid://dosmdi36o7hhg" path="res://Sprites/Menus/delete_button_faded.png" id="8_qvdcs"]
+[ext_resource type="Texture2D" uid="uid://c4dse8gln13xx" path="res://Sprites/Menus/delete_button.png" id="9_cecq0"]
+[ext_resource type="Texture2D" uid="uid://bf65qt4j33dfw" path="res://Sprites/Menus/delete_button_hover.png" id="10_627pp"]
 
-[node name="PlacementMenu" type="Node2D" node_paths=PackedStringArray("mirror_button", "splitter_button")]
+[node name="PlacementMenu" type="Node2D" node_paths=PackedStringArray("mirror_button", "splitter_button", "delete_button")]
 script = ExtResource("1_ifvq6")
 mirror_button = NodePath("MirrorButton")
 splitter_button = NodePath("SplitterButton")
+delete_button = NodePath("DeleteButton")
 
 [node name="BigPlacingButton" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -41,9 +45,21 @@ texture_pressed = ExtResource("5_dhv7j")
 texture_hover = ExtResource("6_sggx0")
 stretch_mode = 3
 
+[node name="DeleteButton" type="TextureButton" parent="."]
+offset_left = 412.0
+offset_top = 28.0
+offset_right = 444.0
+offset_bottom = 60.0
+toggle_mode = true
+texture_normal = ExtResource("8_qvdcs")
+texture_pressed = ExtResource("9_cecq0")
+texture_hover = ExtResource("10_627pp")
+stretch_mode = 3
+
 [node name="LaserGenerator" parent="." instance=ExtResource("8_8etjk")]
 position = Vector2(53, 231)
 
 [connection signal="pressed" from="BigPlacingButton" to="." method="_on_big_placing_button_pressed"]
 [connection signal="pressed" from="MirrorButton" to="." method="_on_mirror_button_pressed"]
 [connection signal="pressed" from="SplitterButton" to="." method="_on_splitter_button_pressed"]
+[connection signal="pressed" from="DeleteButton" to="." method="_on_delete_button_pressed"]

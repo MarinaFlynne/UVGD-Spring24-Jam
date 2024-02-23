@@ -14,6 +14,10 @@ config/name="UVGD Spring 24 Jam"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://Components/Managers/globals.tscn"
+
 [display]
 
 window/size/viewport_width=1280
