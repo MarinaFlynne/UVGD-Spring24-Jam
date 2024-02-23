@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bymevrsijckhw"]
+[gd_scene load_steps=4 format=3 uid="uid://bymevrsijckhw"]
+
+[ext_resource type="Script" path="res://Game-Objects/mirror.gd" id="1_huxpq"]
+[ext_resource type="PackedScene" uid="uid://cv8vkclv7x7ig" path="res://Components/drag_comp.tscn" id="1_p0oht"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4dcx"]
 size = Vector2(37, 7)
@@ -6,6 +9,7 @@ size = Vector2(37, 7)
 [node name="Mirror" type="StaticBody2D" groups=["Mirrors"]]
 collision_layer = 3
 collision_mask = 3
+script = ExtResource("1_huxpq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_t4dcx")
@@ -16,3 +20,8 @@ offset_top = -3.0
 offset_right = 18.0
 offset_bottom = 3.0
 color = Color(0.321569, 0.670588, 0.788235, 0.619608)
+
+[node name="DragComp" parent="." instance=ExtResource("1_p0oht")]
+modulate = Color(1, 1, 1, 0)
+
+[connection signal="move_me" from="DragComp" to="." method="move_to_pos"]

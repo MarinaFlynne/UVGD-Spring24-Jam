@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6xgxcd3ypvyt"]
+
+[ext_resource type="PackedScene" uid="uid://d2y3mraj7adca" path="res://Game-Objects/UI/placement_menu.tscn" id="1_ckoaf"]
+
+[node name="PlacementTest" type="Node2D"]
+
+[node name="PlacementMenu" parent="." instance=ExtResource("1_ckoaf")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

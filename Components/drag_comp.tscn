@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv8vkclv7x7ig"]
+
+[ext_resource type="Script" path="res://Components/drag_comp.gd" id="1_wdkww"]
+
+[node name="DragComp" type="Button"]
+offset_left = -19.0
+offset_top = -4.0
+offset_right = 19.0
+offset_bottom = 4.0
+action_mode = 0
+script = ExtResource("1_wdkww")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
