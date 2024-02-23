@@ -3,6 +3,7 @@ extends Button
 var is_button_down: bool = false
 
 signal move_me(position_to_move)
+signal rotate_me(point_to_rotate_towards: Vector2)
 
 # Called when the node enters the scene tree for the first time.
 
@@ -10,7 +11,11 @@ signal move_me(position_to_move)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if is_button_down:
-		move_me.emit(get_viewport().get_mouse_position())
+		if Input.is_action_pressed("left_click"):
+			move_me.emit(get_viewport().get_mouse_position())
+		elif Input.is_action_pressed("right_click"):
+			rotate_me.emit(get_viewport().get_mouse_position())
+		
 
 
 func _on_button_down():
