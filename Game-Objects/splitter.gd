@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 @export var new_beam_marker: Node2D
 @export var beam_cont_marker: Node2D

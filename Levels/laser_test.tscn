@@ -1,14 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg1g5ckvnutqr"]
+[gd_scene load_steps=7 format=3 uid="uid://bg1g5ckvnutqr"]
 
 [ext_resource type="PackedScene" uid="uid://dvxt5sgpp67cb" path="res://Game-Objects/splitter.tscn" id="1_jj2y0"]
 [ext_resource type="PackedScene" uid="uid://bymevrsijckhw" path="res://Game-Objects/mirror.tscn" id="1_r06fd"]
-[ext_resource type="PackedScene" uid="uid://bmrt2qg0e13nm" path="res://Game-Objects/laser.tscn" id="2_vurmu"]
+[ext_resource type="PackedScene" uid="uid://dtihbv7hy887e" path="res://Game-Objects/laser_generator.tscn" id="3_gk61l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dyeo"]
 size = Vector2(728, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_avljj"]
-size = Vector2(278, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xv0rf"]
 size = Vector2(26, 302.5)
@@ -19,7 +16,13 @@ size = Vector2(1147, 28)
 [node name="LaserTest" type="Node2D"]
 
 [node name="Splitter" parent="." instance=ExtResource("1_jj2y0")]
-position = Vector2(355, 97)
+position = Vector2(471, 146)
+
+[node name="Splitter2" parent="." instance=ExtResource("1_jj2y0")]
+position = Vector2(137, 52)
+
+[node name="Splitter3" parent="." instance=ExtResource("1_jj2y0")]
+position = Vector2(363, 17)
 
 [node name="Mirrors" type="Node2D" parent="."]
 
@@ -43,21 +46,21 @@ rotation = 0.677167
 position = Vector2(392, 53)
 rotation = 2.25451
 
+[node name="Mirror5" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(360, 135)
+rotation = 2.25451
+
+[node name="Mirror7" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(610, 150)
+rotation = 2.25451
+
+[node name="Mirror9" parent="Mirrors" instance=ExtResource("1_r06fd")]
+position = Vector2(470, 222)
+rotation = 3.57552
+
 [node name="Mirror4" parent="Mirrors" instance=ExtResource("1_r06fd")]
 position = Vector2(386, -30)
 rotation = 0.47192
-
-[node name="Mirror5" parent="Mirrors" instance=ExtResource("1_r06fd")]
-position = Vector2(290, -12)
-rotation = 1.79194
-
-[node name="Mirror7" parent="Mirrors" instance=ExtResource("1_r06fd")]
-position = Vector2(215, 101)
-rotation = -0.127041
-
-[node name="Mirror9" parent="Mirrors" instance=ExtResource("1_r06fd")]
-position = Vector2(180, 105)
-rotation = -0.127041
 
 [node name="Mirror10" parent="Mirrors" instance=ExtResource("1_r06fd")]
 position = Vector2(146, 110)
@@ -71,10 +74,6 @@ rotation = -0.127041
 position = Vector2(182, 141)
 rotation = -0.127041
 
-[node name="Mirror15" parent="Mirrors" instance=ExtResource("1_r06fd")]
-position = Vector2(246, 99)
-rotation = -0.0282463
-
 [node name="Colliders" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders"]
@@ -87,17 +86,6 @@ offset_top = -10.0
 offset_right = 368.0
 offset_bottom = 10.0
 color = Color(0.670588, 0.101961, 0.270588, 1)
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Colliders"]
-position = Vector2(140, 12)
-shape = SubResource("RectangleShape2D_avljj")
-
-[node name="ColorRect" type="ColorRect" parent="Colliders/CollisionShape2D4"]
-offset_left = -139.0
-offset_top = -10.0
-offset_right = 139.0
-offset_bottom = 10.0
-color = Color(0.752941, 0.752941, 0.752941, 1)
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Colliders"]
 position = Vector2(13, 90.75)
@@ -121,8 +109,8 @@ offset_right = 573.0
 offset_bottom = 14.0
 color = Color(0.337255, 0.72549, 0.827451, 1)
 
-[node name="Laser" parent="." instance=ExtResource("2_vurmu")]
-position = Vector2(300, 115)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(216, 45)
+
+[node name="LaserGenerator" parent="." instance=ExtResource("3_gk61l")]
+position = Vector2(300, 160)

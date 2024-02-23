@@ -1,16 +1,14 @@
 extends Node2D
 
-@export var ray: RayCast2D
 @export var line: Line2D
-@export var max_bounces: int = 100
+@export var ray: RayCast2D
+var laser_start_direction = Vector2.LEFT
+var bounces = 0;
+const MAX_RAY_DIST = 1000
+const MAX_BOUNCES = 100
+const RAY_MULTIPLIER_H = 1.01
 
-var laser_rays: Array
-
-const MAX_RAY_DIST: int = 1000
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+signal new_laser_req(starting_pt, direction)
 
 func process_mirror_collision(coll, pt) -> bool:
 	#process_mirror_collision(ray,prev,coll,pt)
@@ -29,17 +27,28 @@ func process_mirror_collision(coll, pt) -> bool:
 	
 	return true
 	
-func process_splitter_collision(coll, pt):
-	pass
+func process_splitter_collision(coll, pt, ray):
+	print("emitting", coll.new_laser_point.global_position)
+	new_laser_req.emit(coll.new_laser_point.global_position, Vector2.DOWN)
 	
+	var ray_direction = (pt - ray.global_position).normalized()
+	var ray_start_y = pt.y
+	var ray_start = Vector2(coll.laser_through_point.global_position.x, ray_start_y)
+	
+	print("emitting", coll.laser_through_point.global_position)
+	new_laser_req.emit(ray_start, ray_direction)
+	
+	pass
+
 func process_laser():
 	#first line point is at 0,0
+		line.clear_points()
 		line.add_point(Vector2.ZERO)
 		
 		# initialize ray
 		ray.global_position = line.global_position
 		# cast the ray
-		ray.target_position = (get_global_mouse_position() - line.global_position).normalized() * MAX_RAY_DIST
+		ray.target_position = laser_start_direction.normalized() * MAX_RAY_DIST
 		ray.force_raycast_update()
 		
 		#count the number of times the laser has bounced
@@ -59,7 +68,7 @@ func process_laser():
 			line.add_point(line.to_local(pt))
 			
 			# check if we have reached the max number of bounces
-			if bounces >= max_bounces:
+			if bounces >= MAX_BOUNCES:
 				break
 				
 			# Check what we collided with and handle the collision
@@ -69,15 +78,7 @@ func process_laser():
 				if success == false:
 					break
 			elif coll.is_in_group("Splitters"):
-				#process_splitter_collision(coll, pt)
+				process_splitter_collision(coll, pt, ray)
 				break
 			else:
 				break
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	# make sure line is clear at the start of each frame
-	line.clear_points()
-	
-	if Input.is_action_pressed("shoot_laser"):
-		process_laser()

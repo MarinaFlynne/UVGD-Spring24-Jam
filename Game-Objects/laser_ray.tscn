@@ -1,7 +1,17 @@
-[gd_scene format=3 uid="uid://c2624ba22axr5"]
+[gd_scene load_steps=2 format=3 uid="uid://c2624ba22axr5"]
 
-[node name="LaserRay" type="Node2D"]
+[ext_resource type="Script" path="res://Game-Objects/laser_ray.gd" id="1_3s1yb"]
+
+[node name="LaserRay" type="Node2D" node_paths=PackedStringArray("line", "ray")]
+script = ExtResource("1_3s1yb")
+line = NodePath("Line2D")
+ray = NodePath("RayCast2D")
 
 [node name="Line2D" type="Line2D" parent="."]
+width = 4.0
+default_color = Color(0.972549, 0.278431, 0.407843, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
