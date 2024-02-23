@@ -42,6 +42,8 @@ func place_object(obj_name: String, placement_position: Vector2):
 			object_to_place = mirror_scene.instantiate()
 		"splitter":
 			object_to_place = splitter_scene.instantiate()
+		_:
+			return
 	
 	add_child(object_to_place)
 	object_to_place.global_position = placement_position

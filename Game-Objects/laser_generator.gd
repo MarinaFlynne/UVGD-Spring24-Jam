@@ -1,10 +1,12 @@
 extends Node2D
 
 @export var max_ray_dist: int = 1000
+
 @export_dir var laser_ray_path
+
 var laser_array: Array
 var starting_ray
-var starting_direction
+@export var starting_direction: Vector2 = Vector2.RIGHT
 
 const laser_ray_scene = preload("res://Game-Objects/laser_ray.tscn")
 
@@ -12,7 +14,7 @@ const laser_ray_scene = preload("res://Game-Objects/laser_ray.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	starting_direction = (get_global_mouse_position() - global_position).normalized()
+	#starting_direction = (get_global_mouse_position() - global_position).normalized()
 	starting_ray = laser_ray_scene.instantiate()
 	starting_ray.laser_start_direction = starting_direction
 	starting_ray.new_laser_req.connect(new_laser_request)
@@ -22,10 +24,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# remove all lasers except the starting one
 	for i in range(1, laser_array.size()):
 		var laser = laser_array.pop_back()
 		laser.queue_free()
-	starting_direction = (get_global_mouse_position() - global_position).normalized()
+	# reset all splitters
+	var splitters = get_tree().get_nodes_in_group("Splitters")
+	for splitter in splitters:
+		splitter.enable()
 	starting_ray.laser_start_direction = starting_direction
 	for laser in laser_array:
 		laser.process_laser()

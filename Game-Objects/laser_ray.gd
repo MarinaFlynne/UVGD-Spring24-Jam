@@ -3,7 +3,6 @@ extends Node2D
 @export var line: Line2D
 @export var ray: RayCast2D
 var laser_start_direction = Vector2.LEFT
-var bounces = 0;
 const MAX_RAY_DIST = 1000
 const MAX_BOUNCES = 100
 const RAY_MULTIPLIER_H = 1.01
@@ -27,7 +26,7 @@ func process_mirror_collision(coll, pt) -> bool:
 	
 	return true
 	
-func process_splitter_collision(coll, pt, ray):
+func process_splitter_collision(coll, pt):
 	new_laser_req.emit(coll.new_laser_point.global_position, Vector2.DOWN)
 	
 	var ray_direction = (pt - ray.global_position).normalized()
@@ -35,7 +34,7 @@ func process_splitter_collision(coll, pt, ray):
 	var ray_start = Vector2(coll.laser_through_point.global_position.x, ray_start_y)
 
 	new_laser_req.emit(ray_start, ray_direction)
-	
+	coll.disable()
 	pass
 
 func process_laser():
@@ -51,7 +50,6 @@ func process_laser():
 		
 		#count the number of times the laser has bounced
 		var bounces: int = 0;
-		
 		while true:
 			# check if we are not colliding with anything
 			if not ray.is_colliding():
@@ -76,7 +74,7 @@ func process_laser():
 				if success == false:
 					break
 			elif coll.is_in_group("Splitters"):
-				process_splitter_collision(coll, pt, ray)
+				process_splitter_collision(coll, pt)
 				break
 			else:
 				break
